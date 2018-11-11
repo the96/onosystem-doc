@@ -1,0 +1,82 @@
+PWD /Users/hijiri/Desktop/hijiri/ono-systems/onosystem-doc/外部設計書
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-var/web2c/eptex/platex.fmt
+INPUT 外部設計書v2.tex
+OUTPUT 外部設計書v2.log
+INPUT /usr/local/texlive/2017/texmf-dist/tex/platex/base/jarticle.cls
+INPUT /usr/local/texlive/2017/texmf-dist/tex/platex/base/jarticle.cls
+INPUT /usr/local/texlive/2017/texmf-dist/tex/platex/base/jsize10.clo
+INPUT /usr/local/texlive/2017/texmf-dist/tex/platex/base/jsize10.clo
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/comment/comment.sty
+INPUT 外部設計書v2.aux
+INPUT 外部設計書v2.aux
+OUTPUT 外部設計書v2.aux
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+OUTPUT 外部設計書v2.dvi
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT 外部設計書v2.toc
+INPUT 外部設計書v2.toc
+OUTPUT 外部設計書v2.toc
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT login.pdf
+INPUT extractbb -B cropbox -O login.pdf
+INPUT ps_lost.pdf
+INPUT extractbb -B cropbox -O ps_lost.pdf
+INPUT ps_change.pdf
+INPUT extractbb -B cropbox -O ps_change.pdf
+INPUT account_create.pdf
+INPUT extractbb -B cropbox -O account_create.pdf
+INPUT driver_home.pdf
+INPUT extractbb -B cropbox -O driver_home.pdf
+INPUT driver_side.pdf
+INPUT extractbb -B cropbox -O driver_side.pdf
+INPUT driver_details.pdf
+INPUT extractbb -B cropbox -O driver_details.pdf
+INPUT map.pdf
+INPUT extractbb -B cropbox -O map.pdf
+INPUT user_home.pdf
+INPUT extractbb -B cropbox -O user_home.pdf
+INPUT user_side.pdf
+INPUT extractbb -B cropbox -O user_side.pdf
+INPUT user_details.pdf
+INPUT extractbb -B cropbox -O user_details.pdf
+INPUT time_change.pdf
+INPUT extractbb -B cropbox -O time_change.pdf
+INPUT information_flow.pdf
+INPUT extractbb -B cropbox -O information_flow.pdf
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT 外部設計書v2.aux
