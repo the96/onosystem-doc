@@ -8,7 +8,7 @@
 %
 \title{\huge 配達支援システム\\
 		外部設計書}
-\author{第0.1版\\
+\author{第2.0版\\
         ONO-Systems\\}
 \date{\today}
 
@@ -295,55 +295,97 @@
 システム間のやり取りは，Java，MySQLを用いて行います．
 
 \section{データベース設計}
-本システムのデータベースには，3個のデータテーブルを用いる．各データテーブルの属性を以下に示す．
+本システムのデータベースには，4個のデータテーブルを用いる．各データテーブルの情報を以下に示す．
 
-\subsection{利用者テーブル}
-利用者テーブルでは，利用者に関する情報を管理する．このテーブルのデータテーブルを表2に示す．
+\begin{enumerate}
+	\item 利用者の詳細確認機能\\
+
+	\item ユーザ情報ボタン\\
+
+	\item 時間順ソートボタン\\
+
+	\item 配達済みソートボタン\\
+
+	\item 受け取り可否別表示ボタン\\
+
+	\item 検索バー\\
+
+\end{enumerate}
+
+\begin{figure}[htbp]
+ \begin{center}
+  \includegraphics[width=50mm]{user_home}
+	\caption{ユーザホーム画面}
+	\label{fig:user_home}
+ \end{center}
+
+\end{figure}
+
+\subsubsection{ユーザサイド画面}
+図\ref{fig:user_side}は配達支援システムのユーザサイドの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号，住所)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
+
+\begin{figure}[htbp]
+ \begin{center}
+  \includegraphics[width=50mm]{user_side}
+	\caption{ユーザサイド画面}
+	\label{fig:user_side}
+ \end{center}
+
+\end{figure}
+
+\subsubsection{ユーザ詳細画面}
+図\ref{fig:user_details}は配達支援システムのユーザ詳細画面です．この画面はホーム画面の各荷物欄をタップすると表示され，画面には商品の情報(商品名，伝票番号，お届け先，お届け日時)が表示されます．画面下の「荷物を受け取る」をタップすると配達員に荷物を受け取れると通知され，ユーザホーム画面に遷移します．また，日時変更をタップすると時間変更画面に遷移します．
+\begin{figure}[htbp]
+ \begin{center}
+  \includegraphics[width=50mm]{user_details}
+	\caption{ユーザ詳細画面}
+	\label{fig:user_details}
+ \end{center}
+
+\end{figure}
+
+\subsubsection{日時変更画面}
+図\ref{fig:time_change}は配達支援システムの日時変更画面です．この画面はユーザ詳細画面の「日時変更」をタップすると表示され，画面には商品の情報(商品名，伝票番号，お届け先，お届け日時)が表示されています．「○月○日15:00お届け予定」の下をタップした後に日時を変更し，「変更確定」をタップすることで配達日時を変更できます．「変更確定」タップ後はユーザホーム画面に遷移します．
+
+\begin{figure}[htbp]
+ \begin{center}
+  \includegraphics[width=50mm]{time_change}
+	\caption{時間変更画面}
+	\label{fig:time_change}
+ \end{center}
+
+\end{figure}
+
+\section{システムのハードウェア構成}
+本システムのハードウェア構成は表1の通りです．
 \begin{table}[htbp]
 \begin{center}
- \caption{利用者テーブル}
-  \begin{tabular}{|c|c|c|c|c|c|}\hline
-    属性 & データ型/長 & NULL & Key & 初期値 & その他\\ \hline \hline
-    id & int(10) & NO & PRIMARY & NULL & \\ \hline
-    name & varchar(64) & NO &  & NULL & \\ \hline
-    address & varchar(128) & NO &  & NULL & \\ \hline
-    tel & varchar(64) & NO &  & NULL & \\ \hline
-    passwd & vachar(64) & NO &  & NULL & \\ \hline
+ \caption{ハードウェア構成}
+  \begin{tabular}{|c|c|c|}\hline
+    項目 & 数量 & 備考\\ \hline \hline
+    サーバ & 1台 & AWS\\ \hline
+    管理者端末 & 1台 & \\ \hline
   \end{tabular}
 \end{center}
 \end{table}
 
-\subsection{配達者テーブル}
-配達者テーブルでは，配達者に関する情報を管理する．このテーブルのデータテーブルを表3に示す．
-\begin{table}[htbp]
-\begin{center}
- \caption{配達者テーブル}
-  \begin{tabular}{|c|c|c|c|c|c|}\hline
-    属性 & データ型/長 & NULL & Key & 初期値 & その他\\ \hline \hline
-    id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
-    name & varchar(64) & NO &  & NULL & \\ \hline
-    store\verb|_|code & varchar(64) & NO &  & NULL & \\ \hline
-    account\verb|_|type & int(1) unsigned & NO &  & NULL & \\ \hline
-    passwd & vachar(64) & NO &  & NULL & \\ \hline
-  \end{tabular}
-\end{center}
-\end{table}
 
+\section{ソフトウェア構成}
+システム間のやり取りは，Java，MySQLを用いて行います．
 
-\subsection{座標テーブル}
-座標テーブルでは，配達者の座標に関する情報を管理する．このテーブルのデータテーブルを表4に示す．
-\begin{table}[htbp]
-\begin{center}
- \caption{座標テーブル}
-  \begin{tabular}{|c|c|c|c|c|c|}\hline
-    属性 & データ型/長 & NULL & Key & 初期値 & その他\\ \hline \hline
-    id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
-    latitude & varchar(64) & NO &  & NULL & \\ \hline
-    longitude & varchar(64) & NO &  & NULL & \\ \hline
-		address & varchar(128) & NO &  & NULL & \\ \hline
-  \end{tabular}
-\end{center}
-\end{table}
+\section{データベース設計}
+本システムのデータベースには，4個のデータテーブルを用いる．各データテーブルの情報を以下に示す．
+
+\begin{enumerate}
+\item 利用者テーブル\\
+  利用者に関する情報を管理する．
+\item 配達者テーブル\\
+  配達者に関する情報を管理する．
+\item 管理者テーブル\\
+  管理者に関する情報を管理する．
+\item 商品テーブル\\
+  商品に関する情報を管理する．
+\end{enumerate}
 
 \section{ネットワーク構成}
 本システム全体のネットワーク構成を以下の図\ref{fig:i_f}に示します．
