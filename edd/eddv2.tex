@@ -76,15 +76,15 @@
 \subsection{画面遷移図}
 あとは「社長」にまかせた...
 
-\subsection{画面詳細}
-ここでは配達支援システムの画面詳細について記します．
+\subsection{共有画面詳細}
+ここでは配達支援システムの共有画面詳細について記します．
 
 \subsubsection{ホーム画面}
 図\ref{fig:login}は配達支援システムのホーム画面です．この画面はログインしていない状態でアプリを起動した時に表示されるます．また，この画面から「ログイン」，「アカウント作成」，「パスワードを忘れた場合」に遷移します．
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{login}
+  \includegraphics[width=50mm]{login.pdf}
 	\caption{ログイン画面}
 	\label{fig:login}
  \end{center}
@@ -97,7 +97,7 @@
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{ps_lost}
+  \includegraphics[width=50mm]{ps_lost.pdf}
 	\caption{パスワードを忘れた場合の画面}
 	\label{fig:ps_lost}
  \end{center}
@@ -109,7 +109,7 @@
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{ps_change}
+  \includegraphics[width=50mm]{ps_change.pdf}
 	\caption{パスワード再設定画面}
 	\label{fig:ps_change}
  \end{center}
@@ -121,40 +121,41 @@
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{account_create}
+  \includegraphics[width=50mm]{account_create.pdf}
 	\caption{アカウント作成画面}
 	\label{fig:account_create}
  \end{center}
 
 \end{figure}
 
+\subsection{ドライバー側画面詳細}
+ここでは配達支援システムのドライバー側画面詳細について記します．
 
-
-\subsubsection{ドライバーホーム画面}
+\subsubsection{ホーム画面}
 図\ref{fig:driver_home}は配達支援システムのドライバーのホーム画面です．この画面はログイン画面でID,パスワードを入力し，ログインした場合に表示されます．また，既にログインしている場合はアプリ起動時に表示されます．この画面の機能は下記にて説明します．
 \begin{enumerate}
 	\item 利用者の選択結果のリアルタイム表示機能\\
 	 \ 利用者の荷物受け取りの可否をリアルタイムに画面表示します．ドライバーが未読の間は各欄の左側に「new」と表示されます．
 	\item ユーザ情報ボタン\\
-
+	 \ ユーザのアカウント情報を表示，編集するサイドバーを出すことができます．
 	\item 距離順ソートボタン\\
-
+	 \ ドライバーから配達先までの距離を近い順にソートします．
 	\item 時間順ソートボタン\\
-
+   \ 時間指定の期限が短い順にソートします．
 	\item 配達済みソートボタン\\
-
+   \ 配達完了状態の荷物の表示・非表示を選択できます．
 	\item 受け取り可否別表示ボタン\\
-
+	 \ 「受け取れる」，「受け取れない」，「未選択」の三つを好きに表示・非表示できます．
 	\item マップボタン\\
-
+   \ マップ画面に遷移します．
 	\item 検索バー\\
-
+	 \ 入力された文字と一致する荷物を配達時間順(+距離?)に表示します．
 \end{enumerate}
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{driver_home}
-	\caption{ドライバーホーム画面}
+  \includegraphics[width=50mm]{driver_home.pdf}
+	\caption{ホーム画面}
 	\label{fig:driver_home}
  \end{center}
 
@@ -163,24 +164,24 @@
 
 
 
-\subsubsection{ドライバーサイド画面}
-図\ref{fig:driver_side}は配達支援システムのドライバーサイドの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
+\subsubsection{サイドバー画面}
+図\ref{fig:driver_side}は配達支援システムのサイドバーの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{driver_side}
-	\caption{ドライバーサイド画面}
+  \includegraphics[width=50mm]{driver_side.pdf}
+	\caption{サイド画面}
 	\label{fig:driver_side}
  \end{center}
 
 \end{figure}
 
-\subsubsection{ドライバー詳細画面}
-図\ref{fig:driver_details}は配達支援システムのドライバー詳細画面です．この画面はホーム画面の各荷物欄をタップすると表示されます．画面には配達先の情報(宛名，伝票番号，住所，配達希望時間)が表示されており，配達希望時間の下をタップし配達希望時間を変更した後に更新ボタンをタップすると，配達希望時間を変更することができます．また，画面右上のマップボタンをタップするとマップ画面へ遷移することができ．配達完了ボタンをタップすると配達完了状態にできます．
+\subsubsection{詳細画面}
+図\ref{fig:driver_details}は配達支援システムの詳細画面です．この画面はホーム画面の各荷物欄をタップすると表示されます．画面には配達先の情報(宛名，伝票番号，住所，配達希望時間)が表示されており，プルダウン，更新ボタン，配達完了ボタン，マップボタンがあります．プルダウンでは配達希望時間を選ぶことができ，配達希望時間を変更した後に更新ボタンをタップすると配達希望時間を変更することができます．また，画面下の配達完了ボタンをタップすると配達完了状態にでき,画面右上のマップボタンをタップするとマップ画面へ遷移することができます．
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{driver_details}
-	\caption{ドライバー詳細画面}
+  \includegraphics[width=50mm]{driver_details.pdf}
+	\caption{詳細画面}
 	\label{fig:driver_details}
  \end{center}
 
@@ -193,73 +194,74 @@
 図\ref{fig:map}は配達支援システムのマップ画面です．この画面はホーム画面，ドライバー詳細画面のマップボタンをタップすると表示されます．この画面の機能は下記で説明します．
 \begin{enumerate}
 	\item 配達先表示機能\\
-
+	 \ 各ピンの場所に住所と配達指定時間が表示されます．下記で説明する絞り込み機能を使用している色は非表示になります．
 	\item 受け取り可否表示機能\\
-
+	 \ 各ピンの色で受け取りの可否を表示しています．赤が「受け取り不可」，緑が「受け取り可」，青が「未選択」を表しています．
 	\item 絞り込み機能\\
-
-	\item 拡大縮小機能\\
+   \ 不要な配達先表示を非表示にすることができます．
 
 \end{enumerate}
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{map}
+  \includegraphics[width=50mm]{map.pdf}
 	\caption{マップ画面}
 	\label{fig:map}
  \end{center}
 
 \end{figure}
 
+\newpage
 
+\subsection{ユーザ側詳細画面}
+ここでは配達支援システムのユーザ側画面詳細について記します．
 
-
-
-
-\subsubsection{ユーザホーム画面}
+\subsubsection{ホーム画面}
 図\ref{fig:user_home}は配達支援システムのドライバーのホーム画面です．この画面はログイン画面でID,パスワードを入力し，ログインした場合に表示されます．また，既にログインしている場合はアプリ起動時に表示されます．この画面の機能は下記にて説明します．
 \begin{enumerate}
-	\item 利用者の詳細確認機能\\
-
+	\item 荷物の詳細確認機能\\
+	 \ 画面に商品の詳細(商品名，伝票番号，お届け先，お届け日時)を表示しており，荷物を受け取るボタンと日時変更ボタンがあります．荷物を受け取るボタンをタップすると，ドライバーにに網を受け取る通知を送ります．日時変更ボタンをタップすると日時変更画面に遷移します．
 	\item ユーザ情報ボタン\\
-
-	\item 時間順ソートボタン\\
+	 \ ユーザのアカウント情報を表示・編集するサイドバーを出すことができます．
 
 	\item 配達済みソートボタン\\
+   \ 配達完了状態の荷物の表示・非表示を選択できます．
 
 	\item 受け取り可否別表示ボタン\\
+	 \ 「受け取れる」，「受け取れない」，「未選択」の三つを好きに表示・非表示できます．
 
 	\item 検索バー\\
+	 \ 入力された文字と一致する荷物を配達時間順(+距離?)に表示します．
 
 \end{enumerate}
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{user_home}
-	\caption{ユーザホーム画面}
+  \includegraphics[width=50mm]{user_home.pdf}
+	\caption{ホーム画面}
 	\label{fig:user_home}
  \end{center}
 
 \end{figure}
 
-\subsubsection{ユーザサイド画面}
-図\ref{fig:user_side}は配達支援システムのユーザサイドの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号，住所)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
+\subsubsection{サイドバー画面}
+図\ref{fig:user_side}は配達支援システムのサイドバーの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号，住所)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{user_side}
-	\caption{ユーザサイド画面}
+  \includegraphics[width=50mm]{user_side.pdf}
+	\caption{サイド画面}
 	\label{fig:user_side}
  \end{center}
 
 \end{figure}
 
-\subsubsection{ユーザ詳細画面}
+\subsubsection{詳細画面}
 図\ref{fig:user_details}は配達支援システムのユーザ詳細画面です．この画面はホーム画面の各荷物欄をタップすると表示され，画面には商品の情報(商品名，伝票番号，お届け先，お届け日時)が表示されます．画面下の「荷物を受け取る」をタップすると配達員に荷物を受け取れると通知され，ユーザホーム画面に遷移します．また，日時変更をタップすると時間変更画面に遷移します．
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{user_details}
-	\caption{ユーザ詳細画面}
+  \includegraphics[width=50mm]{user_details.pdf}
+	\caption{詳細画面}
 	\label{fig:user_details}
  \end{center}
 
@@ -270,86 +272,7 @@
 
 \begin{figure}[htbp]
  \begin{center}
-  \includegraphics[width=50mm]{time_change}
-	\caption{時間変更画面}
-	\label{fig:time_change}
- \end{center}
-
-\end{figure}
-
-\section{システムのハードウェア構成}
-本システムのハードウェア構成は表1の通りです．
-\begin{table}[htbp]
-\begin{center}
- \caption{ハードウェア構成}
-  \begin{tabular}{|c|c|c|}\hline
-    項目 & 数量 & 備考\\ \hline \hline
-    サーバ & 1台 & AWS\\ \hline
-    管理者端末 & 1台 & \\ \hline
-  \end{tabular}
-\end{center}
-\end{table}
-
-
-\section{ソフトウェア構成}
-システム間のやり取りは，Java，MySQLを用いて行います．
-
-\section{データベース設計}
-本システムのデータベースには，4個のデータテーブルを用いる．各データテーブルの情報を以下に示す．
-
-\begin{enumerate}
-	\item 利用者の詳細確認機能\\
-
-	\item ユーザ情報ボタン\\
-
-	\item 時間順ソートボタン\\
-
-	\item 配達済みソートボタン\\
-
-	\item 受け取り可否別表示ボタン\\
-
-	\item 検索バー\\
-
-\end{enumerate}
-
-\begin{figure}[htbp]
- \begin{center}
-  \includegraphics[width=50mm]{user_home}
-	\caption{ユーザホーム画面}
-	\label{fig:user_home}
- \end{center}
-
-\end{figure}
-
-\subsubsection{ユーザサイド画面}
-図\ref{fig:user_side}は配達支援システムのユーザサイドの画面です．この画面はホーム画面の「ユーザ情報ボタン」をタップすると表示されます．画面の各欄にはユーザの情報(名前，メールアドレス，パスワード，パスワード再入力，電話番号，住所)が表示されており，変更したい部分を書き換えた後に更新ボタンを押すことでユーザ情報を変更することができます．また，画面中央上部の「×」ボタンまたはバックボタンをタップするとホーム画面に遷移します．
-
-\begin{figure}[htbp]
- \begin{center}
-  \includegraphics[width=50mm]{user_side}
-	\caption{ユーザサイド画面}
-	\label{fig:user_side}
- \end{center}
-
-\end{figure}
-
-\subsubsection{ユーザ詳細画面}
-図\ref{fig:user_details}は配達支援システムのユーザ詳細画面です．この画面はホーム画面の各荷物欄をタップすると表示され，画面には商品の情報(商品名，伝票番号，お届け先，お届け日時)が表示されます．画面下の「荷物を受け取る」をタップすると配達員に荷物を受け取れると通知され，ユーザホーム画面に遷移します．また，日時変更をタップすると時間変更画面に遷移します．
-\begin{figure}[htbp]
- \begin{center}
-  \includegraphics[width=50mm]{user_details}
-	\caption{ユーザ詳細画面}
-	\label{fig:user_details}
- \end{center}
-
-\end{figure}
-
-\subsubsection{日時変更画面}
-図\ref{fig:time_change}は配達支援システムの日時変更画面です．この画面はユーザ詳細画面の「日時変更」をタップすると表示され，画面には商品の情報(商品名，伝票番号，お届け先，お届け日時)が表示されています．「○月○日15:00お届け予定」の下をタップした後に日時を変更し，「変更確定」をタップすることで配達日時を変更できます．「変更確定」タップ後はユーザホーム画面に遷移します．
-
-\begin{figure}[htbp]
- \begin{center}
-  \includegraphics[width=50mm]{time_change}
+  \includegraphics[width=50mm]{time_change.pdf}
 	\caption{時間変更画面}
 	\label{fig:time_change}
  \end{center}
