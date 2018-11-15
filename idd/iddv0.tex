@@ -1,0 +1,160 @@
+%% 情報学群実験第3,4(C)用のレポートテンプレート
+%
+\documentclass[a4j,titlepage]{jarticle}
+%% プリアンブルここから
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{comment}
+%
+\title{\huge 配達支援システム\\
+		内部設計書}
+\author{第0版\\
+        ONO-Systems\\}
+\date{\today}
+
+%本文
+\begin{document}
+\maketitle
+
+%目次
+\tableofcontents
+\clearpage
+
+
+\section{開発対象のシステム概要}
+本システムは，配達物の配達支援を行うシステムです．主な機能を以下に示します．
+\begin{itemize}
+\item 利用者への通知機能
+\item 配達員の位置情報の表示機能
+\item 利用者の選択結果のリアルタイム表示機能
+\item 音声読み上げ機能
+\end{itemize}
+
+
+\section{開発環境}
+本システムの開発環境を以下に示します．
+\begin{itemize}
+\item Android アプリケーション\\
+  Android Studio ver4.2 とか
+\item サーバ\\
+  AWS(AmazonWebService)
+\item 開発言語\\
+  Java, MySQL
+\item 文書・コード管理\\
+  Github
+\end{itemize}
+
+
+\section{動作環境}
+\begin{itemize}
+\item Android アプリケーション\\
+  Android 4.2とか
+\item サーバ\\
+  AWS(AmazonWebService)
+\end{itemize}
+
+
+\section{命名規約}
+モジュール名，変数名などの名前を決定する際には，以下の規則を遵守します．
+\begin{itemize}
+\item 名前には英語を用いる
+\item 基本的な機能や変更点がわかるような名前を付ける
+\item 複数の単語を組み合わせる場合にはキャメルケースを用いる？（スネークケースがいい？）
+\end{itemize}
+
+
+\section{ネットワーク設計}
+本システムのネットワークは図(今はない)のように構成されます．
+
+\section{Android モジュール設計}
+\subsection{モジュール構成}
+\subsection{モジュール仕様}
+
+
+\section{Server モジュール設計}
+\subsection{モジュール構成}
+\subsection{モジュール仕様}
+
+
+\section{データベース設計}
+本システムではデータベースにAWS(AmazonWebService)を使用します．\\
+ER図など
+\subsection{各テーブルの詳細}
+本システムのデータベースには，4個のデータテーブルを用います．各データテーブルの役割と属性を以下に示します．
+\subsubsection{利用者テーブル}
+利用者テーブルでは，利用者に関する情報を管理します．このテーブルのデータテーブルを表1に示します．
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      address & varchar(128) & NO &   & NULL & \\ \hline
+      tel & varchar(64) & NO &   & NULL & \\ \hline
+      mail & int(11) & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{配達者テーブル}
+配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表2に示します．
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{商品テーブル}
+商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表3に示します．
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      address & varchar(128) & NO &   & NULL & \\ \hline
+      tel & varchar(64) & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{管理者テーブル}
+管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表4に示します．
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+\section{バージョン管理規約}
+本システムの開発では，Github を用いてファイルの管理を行います．Github を使用する際には，以下の規則を遵守します．
+\begin{itemize}
+\item ドキュメント関連の資料は，onosystem-doc で管理する
+\item Android のソースコードは，onosystem-android で管理する
+\item Server のソースコードは，onosystem-server で管理する
+\item 編集作業を行う際には，ブランチを切ってコミットする
+\item 開発用ブランチの名前は，「dev\verb|_|○○（開発している機能名）」にする
+\item 細かい頻度でコミットする（1日の作業ごとに纏めてコミットしない）
+\item コミットのコメントはわかりやすい内容にする
+\item Pull Requests されたものを確認し，評価をリアクションのアイコンを追加することで示す
+\item Pull Requests に対して高評価が3つ以上ある場合には master に Merge する
+\end{itemize}
+
+\end{document}
