@@ -1,0 +1,92 @@
+PWD /Users/yoshiken/Desktop/azuma/ono-systems/onosystem-doc/edd
+INPUT /usr/local/texlive/2018/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-var/web2c/eptex/platex.fmt
+INPUT eddv2.tex
+OUTPUT eddv2.log
+INPUT /usr/local/texlive/2018/texmf-dist/tex/platex/base/jarticle.cls
+INPUT /usr/local/texlive/2018/texmf-dist/tex/platex/base/jarticle.cls
+INPUT /usr/local/texlive/2018/texmf-dist/tex/platex/base/jsize10.clo
+INPUT /usr/local/texlive/2018/texmf-dist/tex/platex/base/jsize10.clo
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/here/here.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/here/here.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+INPUT eddv2.aux
+INPUT eddv2.aux
+OUTPUT eddv2.aux
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+OUTPUT eddv2.dvi
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT eddv2.toc
+INPUT eddv2.toc
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT eddv2.toc
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT screen_transition_home.png
+INPUT extractbb -B cropbox -O screen_transition_home.png
+INPUT screen_transition_login.png
+INPUT extractbb -B cropbox -O screen_transition_login.png
+INPUT use_case.png
+INPUT extractbb -B cropbox -O use_case.png
+INPUT login.png
+INPUT extractbb -B cropbox -O login.png
+INPUT ps_lost.png
+INPUT extractbb -B cropbox -O ps_lost.png
+INPUT ps_change.png
+INPUT extractbb -B cropbox -O ps_change.png
+INPUT account_create.png
+INPUT extractbb -B cropbox -O account_create.png
+INPUT driver_home.png
+INPUT extractbb -B cropbox -O driver_home.png
+INPUT driver_side.png
+INPUT extractbb -B cropbox -O driver_side.png
+INPUT driver_details.png
+INPUT extractbb -B cropbox -O driver_details.png
+INPUT map.png
+INPUT extractbb -B cropbox -O map.png
+INPUT user_home.png
+INPUT extractbb -B cropbox -O user_home.png
+INPUT user_side.png
+INPUT extractbb -B cropbox -O user_side.png
+INPUT user_details.png
+INPUT extractbb -B cropbox -O user_details.png
+INPUT time_change.png
+INPUT extractbb -B cropbox -O time_change.png
+INPUT information_flow.pdf
+INPUT extractbb -B cropbox -O information_flow.pdf
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT eddv2.aux
