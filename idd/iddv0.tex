@@ -56,6 +56,26 @@
 
 \section{コーディング規約}
 本プロジェクトのプログラムは、以下の規則を遵守します．
+\subsection{コンポーネントやクラスについて}
+\begin{itemize}
+\item UpperCamelCaseを利用する
+\item Component名は最後につける(Activity, Fragment, TextAreaなど)
+\item 本プロジェクトで頻繁に利用する名詞は以下の表を用いて命名する(表\ref{termTable}参照)
+\begin{table}[htb]
+\centering
+\caption{本プロジェクトで利用する名詞の英単語表}
+\label{termTable}
+\begin{tabular}{|ll|}
+\hline
+外部設計書での名前 & 英単語      \\ \hline
+アカウント保持者  & User     \\
+利用者       & Customer \\
+配達員       & Courier  \\
+配達物       & Delivery \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+
 \subsection{変数の命名について}
 \begin{itemize}
 \item 命名には英語を用いる
@@ -88,12 +108,6 @@
 サーバから情報を取得    & fetch  & \#fetchDeliveryList  \\ \hline
 \end{tabular}
 \end{table}
-\end{itemize}
-
-\subsection{コンポーネントやクラスについて}
-\begin{itemize}
-\item UpperCamelCaseを利用する
-\item Component名は最後につける(Activity, Fragment, TextAreaなど)
 \end{itemize}
 
 \subsection{コーディングについて}
