@@ -41,7 +41,7 @@
 \item 開発言語\\
   Java, MySQL
 \item 文書・コード管理\\
-  Github
+  GitHub
 \end{itemize}
 
 
@@ -54,12 +54,69 @@
 \end{itemize}
 
 
-\section{命名規約}
-モジュール名，変数名などの名前を決定する際には，以下の規則を遵守します．
+\section{コーディング規約}
+本プロジェクトのプログラムは、以下の規則を遵守します．
+\subsection{コンポーネントやクラスについて}
 \begin{itemize}
-\item 名前には英語を用いる
-\item 基本的な機能や変更点がわかるような名前を付ける
-\item 複数の単語を組み合わせる場合にはキャメルケースを用いる？（スネークケースがいい？）
+\item UpperCamelCaseを利用する
+\item Component名は最後につける(Activity, Fragment, TextAreaなど)
+\item 本プロジェクトで頻繁に利用する名詞は以下の表を用いて命名する(表\ref{termTable}参照)
+\begin{table}[htb]
+\centering
+\caption{本プロジェクトで利用する名詞の英単語表}
+\label{termTable}
+\begin{tabular}{|ll|}
+\hline
+外部設計書での名前 & 英単語      \\ \hline
+アカウント保持者  & User     \\
+利用者       & Customer \\
+配達員       & Courier  \\
+配達物       & Delivery \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+
+\subsection{変数の命名について}
+\begin{itemize}
+\item 命名には英語を用いる
+\item 名前から役割が読み取れるように命名する
+\item グローバル変数に用いる英単語は省略しない(String ⇒ Strなど)
+\item LowerCamelCaseを利用する
+\item 定数は全て大文字で表し、スネークケースで連結する
+\item forやwhileのカウンタ変数には、i,j,kを用いる
+\end{itemize}
+
+\subsection{関数の命名について}
+\begin{itemize}
+\item 意味と英単語の対応付けを統一する(表\ref{namingTable})
+\item 名前は動詞で始める
+\item LowerCamelCaseを利用する
+\begin{table}[htb]
+\centering
+\caption{命名に使う英単語表}
+\label{namingTable}
+\begin{tabular}{|lll|}
+\hline
+意味            & 英単語    & 例                    \\ \hline
+真偽値を取得        & is     & \#isCreated          \\
+値を代入          & set    & \#setDelivery        \\
+引数を含むか判定      & has    & \#hasFragment        \\
+特定の動作をしたときに動作 & on     & \#onClick            \\
+新しく作る         & create & \#createSubActivity  \\
+新しく作る         & new    & \#newDelivery        \\
+更新            & update & \#updateDeliveryDate \\
+サーバから情報を取得    & fetch  & \#fetchDeliveryList  \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+
+\subsection{コーディングについて}
+\begin{itemize}
+\item 字下げは半角スペース2つを用いる
+\item マジックナンバーは使用しない
+\item 安易にネット上のソースコードを利用しない
+\item classやif、whileなどのブロック始点のブラケット('\{')は改行せずに、半角スペースを空けて記述する
+\item 機能が完成したとき(Pull Requestsを出すとき)にデバッグ用のコードを残さない
 \end{itemize}
 
 
@@ -68,6 +125,7 @@
 
 \section{Android モジュール設計}
 \subsection{モジュール構成}
+
 \subsection{モジュール仕様}
 
 
