@@ -5,6 +5,7 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{url}
 \usepackage{comment}
+\usepackage{here}
 %
 \title{\huge 配達支援システム\\
 		内部設計書}
@@ -121,7 +122,16 @@
 
 
 \section{ネットワーク設計}
-本システムのネットワークは図(今はない)のように構成されます．
+本システムのネットワークは図\ref{fig:n_d}のように構成されます．
+
+\begin{figure}[H]
+ \begin{center}
+  \includegraphics[width=140mm]{Network_Diagram.png}
+  \caption{ネットワーク構成図}
+  \label{fig:n_d}
+ \end{center}
+
+\end{figure}
 
 \section{Android モジュール設計}
 \subsection{モジュール構成}
