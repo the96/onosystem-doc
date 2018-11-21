@@ -549,25 +549,94 @@
 システム間のやり取りは，Java，MySQLを用いて行います．
 
 \section{データベース設計}
-本システムのデータベースには，4個のデータテーブルを用いる．各データテーブルの情報を以下に示す．
+本システムのデータベースには，5個のデータテーブルを用います．各データテーブルの情報を以下に示します．
 
-\begin{enumerate}
-\item 利用者テーブル\\
-  利用者に関する情報を管理する．
-\item 配達者テーブル\\
-  配達者に関する情報を管理する．
-\item 管理者テーブル\\
-  管理者に関する情報を管理する．
-\item 商品テーブル\\
-  商品に関する情報を管理する．
-\end{enumerate}
+\subsubsection{利用者テーブル}
+利用者テーブルでは，利用者に関する情報を管理します．このテーブルのデータテーブルを表\ref{userTable}に示します．
+\begin{table}[htb]
+  \label{userTable}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      address & varchar(128) & NO &   & NULL & \\ \hline
+      tel & int(11) & NO &   & NULL & \\ \hline
+      mail & varchar(64) & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{配達者テーブル}
+配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表\ref{driverTable}に示します．
+\begin{table}[htb]
+  \label{driverTable}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      mail & varchar(64) & NO &   & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{商品テーブル}
+商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表\ref{goodsTable}に示します．
+\begin{table}[htb]
+  \label{goodsTable}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      slip\verb|_|number & int(12) & NO & PRIMARY  & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      address & varchar(128) & NO &   & NULL & \\ \hline
+      date & int(10) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{管理者テーブル}
+管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表\ref{managerTable}に示します．
+\begin{table}[htb]
+  \label{managerTable}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      user\verb|_|id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      name & varchar(64) & NO &   & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
+      passwd & vachar(64) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{認証テーブル}
+認証テーブルでは，認証に関する情報を管理します．このテーブルのデータテーブルを表\ref{authTable}に示します．
+\begin{table}[htb]
+  \label{authTable}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      user\verb|_|id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      login\verb|_|id & int(10) & NO &   & NULL & \\ \hline
+      passwd & varchar(64) & NO &   & NULL & \\ \hline
+      solt & varchar(64) & NO &  & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \section{ネットワーク構成}
 本システム全体のネットワーク構成を以下の図\ref{fig:i_f}に示します．
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=140mm]{information_flow.pdf}
+  \includegraphics[width=140mm]{information_flow.png}
 	\caption{ネットワーク構成}
 	\label{fig:i_f}
  \end{center}
