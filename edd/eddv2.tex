@@ -558,7 +558,7 @@
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      user\verb|_|id & int(5) unsigned & NO & PRIMARY & NULL & \\ \hline
+      user\verb|_|id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
       address & varchar(128) & NO &   & NULL & \\ \hline
       tel & int(11) & NO &   & NULL & \\ \hline
@@ -575,7 +575,7 @@
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      driver\verb|_|id & int(5) unsigned & NO & PRIMARY & NULL & \\ \hline
+      driver\verb|_|id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
       mail & varchar(64) & NO &   & NULL & \\ \hline
       store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
@@ -623,7 +623,7 @@
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      user\verb|_|id & int(5) unsigned & NO & FOREIGN & NULL & \\ \hline
+      user\verb|_|id & int(10) unsigned & NO & FOREIGN & NULL & \\ \hline
       login\verb|_|id & varchar(64) & NO & FOREIGN  & NULL & \\ \hline
       passwd & varchar(64) & NO &   & NULL & \\ \hline
       solt & varchar(64) & NO &  & NULL & \\ \hline
