@@ -300,8 +300,8 @@
 \subsection{共有画面詳細}
 ここでは配達支援システムの共有画面詳細について記します．
 
-\subsubsection{ホーム画面}
-図\ref{fig:login}は配達支援システムのホーム画面です．この画面はログインしていない状態でアプリを起動した時に表示されるます．また，この画面から「ログイン」，「アカウント作成」，「パスワードを忘れた場合」に遷移します．
+\subsubsection{ログイン画面}
+図\ref{fig:login}は配達支援システムのログイン画面です．この画面はログインしていない状態でアプリを起動した時に表示されるます．また，この画面から「ログイン」，「アカウント作成」，「パスワードを忘れた場合」に遷移します．
 
 \begin{figure}[H]
  \begin{center}
@@ -520,9 +520,10 @@
 \section{データベース設計}
 本システムのデータベースには，5個のデータテーブルを用います．各データテーブルの情報を以下に示します．
 
-\subsubsection{消費者テーブル}
+\subsection{消費者テーブル}
 消費者テーブルでは，消費者に関する情報を管理します．このテーブルのデータテーブルを表\ref{userTable}に示します．
 \begin{table}[htb]
+  \caption{消費者テーブル}
   \label{userTable}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
@@ -537,9 +538,10 @@
   \end{center}
 \end{table}
 
-\subsubsection{配達者テーブル}
+\subsection{配達者テーブル}
 配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表\ref{driverTable}に示します．
 \begin{table}[htb]
+  \caption{配達者テーブル}
   \label{driverTable}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
@@ -554,9 +556,10 @@
   \end{center}
 \end{table}
 
-\subsubsection{商品テーブル}
+\subsection{商品テーブル}
 商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表\ref{goodsTable}に示します．
 \begin{table}[htb]
+  \caption{商品テーブル}
   \label{goodsTable}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
@@ -569,9 +572,10 @@
   \end{center}
 \end{table}
 
-\subsubsection{管理者テーブル}
+\subsection{管理者テーブル}
 管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表\ref{managerTable}に示します．
 \begin{table}[htb]
+  \caption{管理者テーブル}
   \label{managerTable}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
@@ -585,9 +589,10 @@
   \end{center}
 \end{table}
 
-\subsubsection{認証テーブル}
+\subsection{認証テーブル}
 認証テーブルでは，認証に関する情報を管理します．このテーブルのデータテーブルを表\ref{authTable}に示します．
 \begin{table}[htb]
+  \caption{認証テーブル}
   \label{authTable}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
