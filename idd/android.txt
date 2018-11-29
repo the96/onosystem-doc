@@ -1,0 +1,176 @@
+Main {
+  起動時に呼び出されるクラス。画面遷移などを扱う。
+  #createLoginActivity()
+  LoginActivityを生成し、ログインを試みる
+
+  #createHomeActivity(int sessionId, int userType)
+  userTypeに応じてそれぞれのuserTypeに合わせたActivityを表示する。
+  Connectionも渡す。
+
+  #loginCallback(Connection connection)
+  createHomeActivityを呼ぶ。
+
+}
+
+LoginActivity {
+  ログイン画面とログイン機能を実現するクラス。
+  コールバックとして次に表示する画面を生成するメソッドを渡す。
+  interface LoginCallback {
+    #loginCallback(Connection connection)
+    loginが成功した場合に呼び出されるコールバック関数。
+    ログイン時に取得したConnection(セッションIDとUserくらい？)を渡す。
+  }
+  private LoginCallback callback
+  #setCallback(LoginCallback callback)
+
+  #login()
+  このActivityの生成完了後始めに呼び出す。
+  サーバに認証情報を送信し、ログインを試行する。
+  ログインに際し必要な認証情報は、端末内に保持されている情報を用いる。
+
+  #login(int user_id, string password)
+  サーバに認証情報を送信し、ログインを試行する。
+  ログインに際し必要な認証情報は、LoginActivityのテキストフィールドから取得する。
+
+  #checkToken(User.token token)
+  サーバのトークンと自分のトークンを比較して、同じでなかったら、自分のトークンをサーバに送信(sendToken)する
+
+  #sendNoticeToken
+
+  #transitionActivity(Connection connection)
+  ログインに成功した場合、MainActivityの#createHomeActivity()をコールバックして次の画面へ遷移する。
+
+  #createNewAccountActivity()
+  アカウント作成画面を作成し遷移する。
+
+}
+
+NewAccountActivity {
+  アカウント作成画面。アカウント作成が終了したら、finish()させてLoginActivityに戻す。
+  ※作成したアカウントでログインさせる
+}
+
+PasswordResetActivity {
+  パスワードリセット画面。アプリ側でパスワードリセットに必要な手続きが終了したら(例:パスワードリセット用のメールを送信するなど)、finishしてLoginActivityに戻す。
+  ※リセットしたアカウントでログインさせる
+}
+
+HomeActivity {
+  継承元(abstract)になるので、これを先に実装する。
+  消費者・配達員側の非共通機能はそれぞれのクラスで実装する。
+  
+  #repeatJobs()
+  配達物一覧の再取得を行うスレッド
+
+  #getDeliveries()
+  配達物一覧を取得
+
+  #statusSelectButton(View view)
+  受取可否ステータス別に表示
+  以下を参考に、押されたボタンを判定する。
+  該当するステータスのsetVisibleを変更(#toggleSetVisible)し、refleshする。
+  http://nazodesu.blog.fc2.com/blog-entry-62.html
+
+  #toggleSetVisible(int status)
+  指定したステータスのDeliberyオブジェクトのsetVisibleを変更
+
+  #findDeliveryButton(View view)
+  検索ボタンを押したときに該当するDeliveryオブジェクトのみを表示するようにするやつ
+
+  #reflesh()
+  viewDeliveriesの内容を再描画する
+  DeliveryクラスのsetVisibleがtrueのモノを表示する
+
+  #editProfileButton(View view)
+  Profile編集画面を出すためのボタン。
+  abstractメソッド。
+
+}
+
+CustomerHomeActivity {
+  消費者側の配達物一覧画面
+  #editProfileButton(View view)
+  ユーザ情報を編集するための画面を出す
+}
+
+CourierHomeActivity {
+  配達員側の配達物一覧画面
+  #editProfileButton(View view)
+  ユーザ情報を編集するための画面を出す
+
+  #repeatJobs()
+  配達物一覧の再取得を行うスレッド。
+  #getLocation()して、近くなっていたら(#名前は未定()==true)サーバに教える
+  CourierMapActivity#setDeliveries(Deriveryの配列)、CourierMapActivity#reflesh()を呼ぶ
+
+  #getLocation()
+  位置情報を取得する
+
+  #名前は未定()
+  配達物と自分の距離を計算して指定された距離以内だったらtrueを返す、それ以外ならfalseを返す
+
+  #sort__Button(View view)
+  __順でソートするボタンを押した際に発火されるボタン。
+  ソートする必要があるのか判定したり、
+  ソートが完了した配列をviewDeliveriesに格納し、#reflesh()を呼び出す
+
+  #sort__()
+  __順にソートする。
+  色々な順番で非数値オブジェクトをソートする方法は以下を参考に。
+  Comparableインタフェースを使うより、その場でソートしたい順番に適したラムダ式を与えるのが良いと思う。
+  ソートが完了したらDelivery配列を返す。
+  https://www.iandprogram.net/entry/2015/02/08/181600
+
+}
+
+DeliveryDetail {
+  継承元(abstract)になるので、これを先に実装する。
+  消費者・配達員側の非共通機能はそれぞれのクラスで実装する。
+
+  #reschedulingButton(View view)
+  配達日時の変更ボタンを押したときに発火されるabstractメソッド
+
+}
+
+CustomerDeliveryDetail {
+  消費者側の配達物詳細画面
+  
+  #reschedulingButton(View view)
+  配達日時の変更ボタンを押したときに発火されるメソッド
+
+  #resievableButton(View view)
+  荷物を受け取れる旨をサーバに送信
+}
+
+CourierDeliveryDetail {
+  配達員側の配達物詳細画面
+  
+  #reschedulingButton(View view)
+  配達日時の変更ボタンを押したときに発火されるメソッド
+
+  #deliveriedButton(View view)
+  配達完了ボタンを押したときに発火されるメソッド
+}
+
+CourierMapActivity {
+  配達員側のマップ画面
+
+  #setDeliveries
+  配達物のリストを受け取る
+
+  #reflesh
+  再描画
+}
+
+
+
+Connection
+  サーバとの通信に必要な情報を詰めたクラス。
+  とりあえずセッションIDとUser情報を詰めておく。
+
+User
+  ユーザ情報を詰めたクラス。
+
+Delivery
+  配達物情報を詰めたクラス。
+  boolean setVisibleを持たせて表示するかしないかを保存
