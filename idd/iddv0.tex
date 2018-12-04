@@ -155,11 +155,12 @@
 本システムではデータベースにAWS(AmazonWebService)を使用します．\\
 ER図など
 \subsection{各テーブルの詳細}
-本システムのデータベースには，4個のデータテーブルを用います．各データテーブルの役割と属性を以下に示します．
-\subsubsection{利用者テーブル}
-利用者テーブルでは，利用者に関する情報を管理します．このテーブルのデータテーブルを表\ref{customer}に示します．
+本システムのデータベースには，5個のデータテーブルを用います．各データテーブルの役割と属性を以下に示します．
+\subsubsection{消費者テーブル}
+消費者テーブルでは，消費者に関する情報を管理します．このテーブルのデータテーブルを表\ref{customer}に示します．
 \begin{table}[htb]
-  \caption{customer}
+  \caption{消費者テーブル}
+  \label{customer}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
@@ -169,7 +170,7 @@ ER図など
       tel & varchar(11) & YES &   & NULL & \\ \hline
       address & varchar(128) & YES &   & NULL & \\ \hline
       hash & varchar(255) & NO &   & NULL & \\ \hline
-      solt & varchar(255) & NO &   & NULL & \\ \hline
+      salt & varchar(255) & NO &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -177,7 +178,8 @@ ER図など
 \subsubsection{配達者テーブル}
 配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表\ref{driver}に示します．
 \begin{table}[htb]
-  \caption{driver}
+  \caption{配達者テーブル}
+  \label{driver}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
@@ -188,7 +190,7 @@ ER図など
       store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
       account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
       hash & varchar(255) & NO &   & NULL & \\ \hline
-      solt & varchar(255) & NO &   & NULL & \\ \hline
+      salt & varchar(255) & NO &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -196,7 +198,8 @@ ER図など
 \subsubsection{商品テーブル}
 商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表\ref{delivery}に示します．
 \begin{table}[htb]
-  \caption{delivery}
+  \caption{商品テーブル}
+  \label{delivery}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
@@ -215,7 +218,8 @@ ER図など
 \subsubsection{管理者テーブル}
 管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表\ref{manager}に示します．
 \begin{table}[htb]
-  \caption{manager}
+  \caption{管理者テーブル}
+  \label{manager}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
@@ -225,7 +229,7 @@ ER図など
       store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
       account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
       hash & varchar(255) & NO &   & NULL & \\ \hline
-      solt & varchar(255) & NO &   & NULL & \\ \hline
+      salt & varchar(255) & NO &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -233,7 +237,8 @@ ER図など
 \subsubsection{地図テーブル}
 地図テーブルでは，地図に関する情報を管理します．このテーブルのデータテーブルを表\ref{map}に示します．
 \begin{table}[htb]
-  \caption{map}
+  \caption{地図テーブル}
+  \label{map}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
