@@ -157,62 +157,89 @@ ER図など
 \subsection{各テーブルの詳細}
 本システムのデータベースには，4個のデータテーブルを用います．各データテーブルの役割と属性を以下に示します．
 \subsubsection{利用者テーブル}
-利用者テーブルでは，利用者に関する情報を管理します．このテーブルのデータテーブルを表1に示します．
+利用者テーブルでは，利用者に関する情報を管理します．このテーブルのデータテーブルを表\ref{customer}に示します．
 \begin{table}[htb]
+  \caption{customer}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      id & int(10) & NO & PRIMARY & NULL & \\ \hline
+      customer\verb|_|id & int(9) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
-      address & varchar(128) & NO &   & NULL & \\ \hline
-      tel & varchar(64) & NO &   & NULL & \\ \hline
-      mail & int(11) & NO &   & NULL & \\ \hline
-      passwd & vachar(64) & NO &   & NULL & \\ \hline
+      mail & varchar(64) & NO &   & NULL & \\ \hline
+      tel & varchar(11) & YES &   & NULL & \\ \hline
+      address & varchar(128) & YES &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   & NULL & \\ \hline
+      solt & varchar(255) & NO &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
 
 \subsubsection{配達者テーブル}
-配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表2に示します．
+配達者テーブルでは，配達者に関する情報を管理します．このテーブルのデータテーブルを表\ref{driver}に示します．
 \begin{table}[htb]
+  \caption{driver}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      driver\verb|_|id & int(9) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
-      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
-      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
-      passwd & vachar(64) & NO &   & NULL & \\ \hline
+      mail & varchar(64) & YES &  & NULL & \\ \hline
+      tel & varchar(11) & YES &  & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   & NULL & \\ \hline
+      solt & varchar(255) & NO &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
 
 \subsubsection{商品テーブル}
-商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表3に示します．
+商品テーブルでは，商品に関する情報を管理します．このテーブルのデータテーブルを表\ref{delivery}に示します．
 \begin{table}[htb]
+  \caption{delivery}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      id & int(10) & NO & PRIMARY & NULL & \\ \hline
+      slip\verb|_|number & varchar(12) & NO & PRIMARY & NULL & \\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
       address & varchar(128) & NO &   & NULL & \\ \hline
-      tel & varchar(64) & NO &   & NULL & \\ \hline
-      passwd & vachar(64) & NO &   & NULL & \\ \hline
+      time & varchar(11) & YES &   & NULL & \\ \hline
+      delivery\verb|_|status & int(1) unsigned & YES &   & NULL & \\ \hline
+      receive\verb|_|status & int(1) unsigned & YES &  & NULL & \\ \hline
+      customer\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
+      driver\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
 
 \subsubsection{管理者テーブル}
-管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表4に示します．
+管理者テーブルでは，管理者に関する情報を管理します．このテーブルのデータテーブルを表\ref{manager}に示します．
 \begin{table}[htb]
+  \caption{manager}
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      id & int(10) unsigned & NO & PRIMARY & NULL & \\ \hline
+      manager\verb|_|id & int(1) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
       name & varchar(64) & NO &   & NULL & \\ \hline
-      store\verb|_|code & varchar(64) & NO &   & NULL & \\ \hline
-      account\verb|_|type & int(1) unsigned & NO &   & NULL & \\ \hline
-      passwd & vachar(64) & NO &   & NULL & \\ \hline
+      mail & varchar(64) & YES &  & NULL & \\ \hline
+      store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
+      account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   & NULL & \\ \hline
+      solt & varchar(255) & NO &   & NULL & \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{地図テーブル}
+地図テーブルでは，地図に関する情報を管理します．このテーブルのデータテーブルを表\ref{map}に示します．
+\begin{table}[htb]
+  \caption{map}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+      属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
+      map\verb|_|id & varchar(12) & NO & MULTIPLE & NULL & \\ \hline
+      lat & double(8,6) & YES &   & NULL & \\ \hline
+      lng & double(9,6) & YES &   & NULL & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
