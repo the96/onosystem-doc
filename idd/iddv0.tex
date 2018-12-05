@@ -165,12 +165,12 @@ ER図など
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
       customer\verb|_|id & int(9) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
-      name & varchar(64) & NO &   & NULL & \\ \hline
-      mail & varchar(64) & NO &   & NULL & \\ \hline
+      name & varchar(64) & NO &   &  & \\ \hline
+      mail & varchar(64) & NO &   &  & \\ \hline
       tel & varchar(11) & YES &   & NULL & \\ \hline
       address & varchar(128) & YES &   & NULL & \\ \hline
-      hash & varchar(255) & NO &   & NULL & \\ \hline
-      salt & varchar(255) & NO &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   &  & \\ \hline
+      salt & varchar(255) & NO &   &  & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -184,13 +184,13 @@ ER図など
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
       driver\verb|_|id & int(9) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
-      name & varchar(64) & NO &   & NULL & \\ \hline
-      mail & varchar(64) & YES &  & NULL & \\ \hline
+      name & varchar(64) & NO &   &  & \\ \hline
+      mail & varchar(64) & NO &  &  & \\ \hline
       tel & varchar(11) & YES &  & NULL & \\ \hline
       store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
       account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
-      hash & varchar(255) & NO &   & NULL & \\ \hline
-      salt & varchar(255) & NO &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   &  & \\ \hline
+      salt & varchar(255) & NO &   &  & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -204,11 +204,11 @@ ER図など
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
       slip\verb|_|number & varchar(12) & NO & PRIMARY & NULL & \\ \hline
-      name & varchar(64) & NO &   & NULL & \\ \hline
-      address & varchar(128) & NO &   & NULL & \\ \hline
+      name & varchar(64) & NO &   &  & \\ \hline
+      address & varchar(128) & NO &   &  & \\ \hline
       time & varchar(11) & YES &   & NULL & \\ \hline
-      delivery\verb|_|status & int(1) unsigned & YES &   & NULL & \\ \hline
-      receive\verb|_|status & int(1) unsigned & YES &  & NULL & \\ \hline
+      delivery\verb|_|status & int(1) unsigned & NO &   & 0 & \\ \hline
+      receive\verb|_|status & int(1) unsigned & NO &  & 0 & \\ \hline
       customer\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
       driver\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
     \end{tabular}
@@ -224,12 +224,12 @@ ER図など
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
       manager\verb|_|id & int(1) unsigned & NO & PRIMARY & NULL & auto\verb|_|increment\\ \hline
-      name & varchar(64) & NO &   & NULL & \\ \hline
-      mail & varchar(64) & YES &  & NULL & \\ \hline
+      name & varchar(64) & NO &   &  & \\ \hline
+      mail & varchar(64) & NO &  &  & \\ \hline
       store\verb|_|code & varchar(64) & YES &   & NULL & \\ \hline
       account\verb|_|type & int(1) unsigned & YES &   & NULL & \\ \hline
-      hash & varchar(255) & NO &   & NULL & \\ \hline
-      salt & varchar(255) & NO &   & NULL & \\ \hline
+      hash & varchar(255) & NO &   &  & \\ \hline
+      salt & varchar(255) & NO &   &  & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
