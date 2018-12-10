@@ -418,6 +418,7 @@ int & UNRECEIVABLE  & 1   \\
 int & RECEIVABLE  & 2   \\\hline
 \end{tabular}
 \end{table}
+\clearpage
 
 \subsubsection{CustomerHomeActivityクラス}
 消費者側のホーム画面を定義するクラスで，HomeActivityクラスを継承して実装します．
@@ -606,6 +607,7 @@ string & token & 端末登録トークン \\ \hline
 \end{table}
 receivable\verb|_|statusは，未配達を0，配達済みを1で表します．
 delivered\verb|_|statusは，未選択の状態を0，受け取れない場合は1，受け取れる場合は2で状態を表現します．
+\clearpage
 
 \subsection{モジュール構成}
 サーバは，認証，配達員側，消費者側のモジュールに加え，管理者側や通知機能に関するモジュールから構成されています．
@@ -731,6 +733,7 @@ PKは主キー，MKは外部キーを表しています．
     \end{tabular}
   \end{center}
 \end{table}
+\clearpage
 
 \subsubsection{配達員テーブル}
 配達員テーブルでは，配達員に関する情報を管理します．このテーブルのデータテーブルを表\ref{driver}に示します．
