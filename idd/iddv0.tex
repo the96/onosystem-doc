@@ -763,9 +763,10 @@ PKは主キー，MKは外部キーを表しています．
       slip\verb|_|number & varchar(12) & NO & PRIMARY & NULL & \\ \hline
       name & varchar(64) & NO &   &  & \\ \hline
       address & varchar(128) & NO &   &  & \\ \hline
-      time & varchar(11) & YES &   & NULL & \\ \hline
-      delivery\verb|_|status & int(1) unsigned & NO &   & 0 & \\ \hline
-      receive\verb|_|status & int(1) unsigned & NO &  & 0 & \\ \hline
+      ship\verb|_|from & varchar(64) & YES &  & NULL & \\ \hline
+      time & varchar(10) & YES &   & NULL & \\ \hline
+      delivered\verb|_|status & int(1) unsigned & NO &   & 0 & \\ \hline
+      receivable\verb|_|status & int(1) unsigned & NO &  & 0 & \\ \hline
       customer\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
       driver\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
     \end{tabular}
@@ -799,7 +800,7 @@ PKは主キー，MKは外部キーを表しています．
   \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|} \hline
       属性 & データ型/長 & NULL & Key & 初期値 & その他 \\ \hline \hline
-      map\verb|_|id & varchar(12) & NO & MULTIPLE & NULL & \\ \hline
+      slip\verb|_|number & varchar(12) & NO & MULTIPLE & NULL & auto\verb|_|increment\\ \hline
       lat & double(8,6) & YES &   & NULL & \\ \hline
       lng & double(9,6) & YES &   & NULL & \\ \hline
     \end{tabular}
