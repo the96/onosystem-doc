@@ -36,7 +36,7 @@
   配達員側の機能に，マップ画面で配達先の位置を表示する機能があります．
   受取可否ステータス別に表示でき，消費者が受け取らない選択をした配達物を非表示にする機能を実現します．
 \item 配達物のソート機能\\
-  配達員側では，配達物一覧を，現在位置と配達先間の距離順で並びかえる機能があります．
+  配達員側では，配達物一覧を，配達先の距離順に並びかえる機能があります．
   また，配達物の指定時間順でソートする機能も実装します．
 \end{itemize}
 
@@ -94,6 +94,7 @@
 \item 名前から役割が読み取れるように命名する
 \item グローバル変数に用いる英単語は省略しない(String ⇒ Strなど)
 \item LowerCamelCaseを利用する
+\item データベースと対応する変数名は，スネークケースを利用する
 \item 定数は全て大文字で表し，スネークケースで連結する
 \item forやwhileのカウンタ変数には，i，j，kを用いる
 \end{itemize}
@@ -152,48 +153,14 @@
 
 \section{Android モジュール設計}
 Androidのモジュール設計について示します．
-\begin{comment}
-Androidモジュールの引数や返り値で使用している単語は，表\ref{androidTable}の通りです．
-\begin{table}[htb]
-\centering
-\caption{使用する変数の定義}
-\label{androidTable}
-\begin{tabular}{|lll|}
-\hline
-型 & 変数名 & 意味      \\ \hline
-int & driver\verb|_|id & 配達員のID     \\
-int & customer\verb|_|id & 消費者のID     \\
-int & user\verb|_|id & ユーザID(消費者ID，または配達員ID)     \\
-int & sessionId & セッションID     \\
-int & userType & 消費者か配達員かを識別するユーザタイプ     \\
-string  & name  & 名前     \\
-string & possword & パスワード     \\
-string & mail & メールアドレス     \\
-string & tel & 電話番号     \\
-string & address & 住所     \\
-long  &  slip\verb|_|number  & 伝票番号   \\
-long & ship\verb|_|from & 発送元     \\
-int & time & 配達日・時間     \\
-int & receivable\verb|_|status & 配達状況    \\
-int & delivered\verb|_|status  &  受け取り可否  \\
-int & status  &  受け取り可否  \\
-int & store\verb|_|code & 店舗コード     \\
-string & URL &  \\
-string & json &  \\
-boolean & visible  &  表示，または非表示   \\\hline
-\end{tabular}
-\end{table}
-receivable\verb|_|statusは，未配達を0，配達済みを1で表します．
-delivered\verb|_|statusは，未選択の状態を0，受け取れない場合は1，受け取れる場合は2で状態を表現します．
-\clearpage
-\end{comment}
+
 
 \subsection{モジュール構成}
 本システムでの画面遷移は，図\ref{fig:login}，\ref{fig:home}のようになっています．各画面を構成するモジュールについて説明します．
 また，サーバとの通信に必要なモジュール，通知機能に関するモジュールなども設計します．
 画面遷移する際は遷移先のモジュール呼び出しを行います．
 本システムは消費者側と配達員側で遷移する画面が異なりますが，類似する機能が多数存在します．
-そのため，共通部分は１つのモジュールとして作成し，異なる機能の実装は元となるモジュールを継承し消費者側と配達員側で分けて作成しています．
+そのため，共通部分は一つのモジュールとして作成し，異なる機能の実装は元となるモジュールを継承し消費者側と配達員側で分けて作成しています．
 \begin{figure}[H]
  \begin{center}
   \includegraphics[width=150mm]{screen_transition_login.png}
@@ -210,7 +177,11 @@ delivered\verb|_|statusは，未選択の状態を0，受け取れない場合�
 \end{figure}
 
 \subsection{モジュール仕様}
-Androidの各モジュールの仕様は以下の通りです．
+Androidの各モジュールの仕様について以下に示します．
+
+モジュール仕様で示す各メソッドでは，動作，引数，返り値について説明しています．
+なお，メソッドの引数に，View view と記載している部分がありますが，この view とは，画面上に配置しているボタンのことです．
+Android Studioでは，ボタンが押された場合の処理を行う際，引数にView型が渡される仕様であるため，本小節で示す複数のButtonメソッドでは，引数に View view と記載しています．
 
 \subsubsection{Deliveryクラス}
 配達物に関する情報を持つクラスです．
@@ -221,10 +192,10 @@ Deliveryクラスで定義する要素を，表\ref{deliveryTable}に示しま�
 \label{deliveryTable}
 \begin{tabular}{|lll|}
 \hline
-型 & 変数名 & 意味      \\ \hline
+型 & 変数・定数名 & 意味      \\ \hline
+long  &  slip\verb|_|number  &  伝票番号  \\
 string  & name  & 宛名     \\
 string & address &  住所    \\
-long  &  slip\verb|_|number  &  伝票番号  \\
 long & ship\verb|_|from &  発送元    \\
 int & time &  配達日時    \\
 int & receivable\verb|_|status &  受取可否   \\
@@ -242,7 +213,7 @@ int & RECEIVABLE  & 2：受け取り可   \\\hline
 \clearpage
 
 \subsubsection{Userクラス}
-ユーザに関する情報を持つクラスで，消費者・配達員で共通の要素を定義します．
+ユーザに関する情報を持つクラスで，消費者側・配達員側で共通の要素を定義します．
 非共通部分はそれぞれのクラスで実装します．
 Userクラスで定義する要素を，表\ref{userTable}に示します．\\
 \begin{table}[htb]
@@ -253,7 +224,7 @@ Userクラスで定義する要素を，表\ref{userTable}に示します．\\
 \hline
 型 & 変数名 & 意味      \\ \hline
 string  & name  & 名前     \\
-string & possword & パスワード     \\
+string & password & パスワード     \\
 string & mail & メールアドレス     \\
 long & tel & 電話番号     \\\hline
 \end{tabular}
@@ -315,9 +286,9 @@ int &  httpStatusCode & HTTPステータスコード\\\hline
 返り値： なし
 
 \item sendRequest\\
-動作： サーバにリクエストを投げる．bodyはjsonでわたす．セッションIDがあれば付与してリクエストする．返り値はResponseDataクラスのオブジェクト．\\
+動作： サーバにリクエストを投げる．bodyはjsonで渡す．セッションIDがあれば付与してリクエストする．返り値はResponseDataクラスのオブジェクト．\\
 引数： String URL, String json\\
-返り値： class ResponseData
+返り値： ResponseData responseData
 \end{itemize}
 
 \subsubsection{LoginActivityクラス}
@@ -327,7 +298,7 @@ LoginActivityクラスのメソッドは以下の通りです．
 \begin{itemize}
 \item loginButton\\
   動作： ログインボタンが押された際に，フォームに入力されたユーザIDとパスワードを引数に渡してloginを呼び出す.\\
-  引数： なし\\
+  引数： View view\\
   返り値： なし
   
   \item autoLogin\\
@@ -337,7 +308,7 @@ LoginActivityクラスのメソッドは以下の通りです．
 
 \item login\\
   動作： サーバにユーザIDとパスワードを送信し，ログインを試行する．ログインに成功した場合，transitionActivityを呼び出す．\\
-  引数： int user\verb|_|id(消費者ID，または配達員ID)，String password\\
+  引数： int id(customer\verb|_|idまたはdriver\verb|_|id)，String password\\
   返り値： なし
 
  \item sendToken\\
@@ -351,8 +322,8 @@ LoginActivityクラスのメソッドは以下の通りです．
   返り値： なし
 
   \item createNewAccountActivity\\
-  動作： 　ログイン画面のアカウント作成ボタンが押された際，アカウント作成画面へ遷移する．\\
-  引数： 　なし\\
+  動作： ログイン画面のアカウント作成ボタンが押された際，アカウント作成画面へ遷移する．\\
+  引数： なし\\
   返り値： なし
 \end{itemize}
 
@@ -367,7 +338,7 @@ LoginActivityクラスのメソッドは以下の通りです．
 
  \item createNewAccount\\
   動作：  入力されたデータで新規アカウントの作成を行う．\\
-  引数： 　String name，String mail，long tel，String address，String password\\
+  引数： String name，String mail，long tel，String address，String password\\
   返り値： なし
 \end{itemize}
 
@@ -398,7 +369,7 @@ HomeActivityクラスのメソッドは以下の通りです．
   返り値：  なし
 
   \item findDeliveries\\
-  動作：  検索窓に入力された情報と一致するdeliveriesInfo(ship\verb|_|from)のvisibleをtrueにする\\
+  動作：  検索窓に入力された情報と一致するdeliveriesInfo(ship\verb|_|from)のvisibleをtrueにする．\\
   引数：  検索窓に入力された情報\\
   返り値：  なし
 　
@@ -418,13 +389,13 @@ HomeActivityクラスのメソッドは以下の通りです．
   返り値：  なし
 
   \item toggleVisibleFromReceivable\\
-  動作：  該当ステータスの表示非表示を切り替え，refreshメソッドを呼び出し再描画する．\\
+  動作：  該当ステータスの表示非表示(visible)を切り替え，refreshメソッドを呼び出し再描画する．\\
   引数：  int delivered\verb|_|status\\
   返り値：  なし
 
   \item showDeliveryDetailActivity\\
   動作：  配達物詳細画面へ遷移する．\\
-  引数：  class Delivery\\
+  引数：  Delivery delivery\\
   返り値：  なし
 \end{itemize}
 
@@ -436,21 +407,21 @@ CustomerHomeActivityクラスのメソッドは以下の通りです．
   \item getDeliveries\\
   動作：  消費者IDを用いてデータベースから配達物一覧の取得を行う．\\
   引数：  int customer\verb|_|id\\
-  返り値：  ArrayList deliveriesInfo
+  返り値：  ArrayList\verb|<|Delivery\verb|>| deliveriesInfo
 
   \item editProfile\\
   動作：  customerから引数を取得する．また，getProfileCustomerとupdateProfileのメソッドを呼び出して変更を行う．\\
-  引数：  class customer\\
+  引数：  Customer customer\\
   返り値：  なし
 
   \item getProfileCustomer\\
   動作：  消費者IDを利用してデータベースからプロフィール情報を取得する．\\
   引数：  int customer\verb|_|id\\
-  返り値：  class customer
+  返り値：  Customer customer
 
   \item updateProfile\\
   動作：  データベース上で消費者の情報を更新する．\\
-  引数：  class customer\\
+  引数：  Customer customer\\
   返り値：  なし
 \end{itemize}
 
@@ -462,47 +433,47 @@ CourierHomeActivityクラスのメソッドは以下の通りです．
 \begin{itemize}
   \item editProfile\\
   動作：  courierから引数を取得する．また，getProfileCourierとupdateProfileのメソッドを呼び出して変更を行う.\\
-  引数：  class courier\\
+  引数：  Courier courier\\
   返り値：  なし
 
   \item getProfileCourier\\
   動作：  配達員IDを利用してデータベースからプロフィール情報を取得する.\\
   引数：  int driver\verb|_|id\\
-  返り値：  class courier
+  返り値：  Courier courier
 
   \item updateProfile\\
   動作：  データベース上で配達員の情報を更新する\\
-  引数：  class courier\\
+  引数：  Courier courier\\
   返り値：  なし
 
   \item getDeliveries\\
   動作：  配達員IDを用いてデータベースから配達物一覧の取得を行う.\\
   引数：  int driver\verb|_|id\\
-  返り値：  ArrayList deliveriesInfo
+  返り値：  ArrayList\verb|<|Delivery\verb|>| deliveriesInfo
 
   \item sortTimeButton\\
-  動作：  配達物を時間順でソートするためのボタン．ソートする必要があるのか判定し，ソートを行う際は，sortTimeメソッドを呼び出す．ソートが完了した配列をviewDeliveriesに格納し，refreshメソッドを呼び出す．\\
+  動作：  配達物を時間順でソートするためのボタン．ソートする必要があるのか判定し，ソートを行う際は，sortTimeメソッドを呼び出す．ソートが完了した配列をdeliveriesInfoに格納し，refreshメソッドを呼び出す．\\
   引数：  View view\\
   返り値：  なし
 
   \item sortTime\\
-  動作：  Deliveryクラスのtimeを利用し，時間順に配達物をソートする．\\
-  引数：  ArrayList deliveriesInfo\\
+  動作：  deliveriesInfo(time)を利用し，時間順に配達物をソートする．\\
+  引数：  ArrayList\verb|<|Delivery\verb|>| deliveriesInfo\\
   返り値：  なし
 
   \item sortDistanceButton\\
-  動作：  距離順でソートするボタン．ソートする必要があるのか判定した上で，ソートを行う際はsortDistanceを呼び出す．ソートが完了した配列をviewDeliveriesに格納し，refreshメソッドを呼び出す．\\
+  動作：  距離順でソートするボタン．ソートする必要があるのか判定した上で，ソートを行う際はsortDistanceを呼び出す．ソートが完了した配列をdeliveriesInfoに格納し，refreshメソッドを呼び出す．\\
   引数：   View view\\
   返り値：  なし
 
   \item sortDistance\\
-  動作：  距離順に配達物をソートする．商品の宛先情報の，緯度(lat)，経度(lng)から距離を計算する．\\
-  引数：  ArrayList deliveriesInfo\\
+  動作：  距離順に配達物をソートする．商品の宛先情報から距離を計算する．\\
+  引数：  ArrayList\verb|<|Delivery\verb|>| deliveriesInfo\\
   返り値：  なし
 
   \item showMapActivity\\
   動作：  マップ画面へ遷移する．\\
-  引数：  class Delivery\\
+  引数：  Delivery delivery\\
   返り値：  なし
 \end{itemize}
 
@@ -518,12 +489,12 @@ CourierHomeActivityクラスのメソッドは以下の通りです．
 
 \subsubsection{CustomerDeliveryDetailクラス}
 消費者側の配達物詳細画面のクラスで，DeliveryDetailクラスを継承します．
-荷物受取可否を選択する機能を実現します．
+このクラスでは，荷物受取可否を選択する機能を実現します．
 CustomerDeliveryDetailクラスのメソッドは以下の通りです．
 \begin{itemize}
  \item reschedulingButton\\
  動作： 日時変更画面へ遷移する．\\
- 引数： なし\\
+ 引数： Delivery delivery\\
  返り値： なし
 
  \item receivableButton\\
@@ -534,12 +505,12 @@ CustomerDeliveryDetailクラスのメソッドは以下の通りです．
 
 \subsubsection{CourierDeliveryDetailクラス}
 配達員側の配達物詳細画面を定義するクラスで，DeliveryDetailクラスを継承します．
-配達完了を報告する機能を実装します．
+このクラスでは，配達完了を報告する機能を実装します．
 CourierDeliveryDetailクラスのメソッドは以下の通りです．
 \begin{itemize}
 \item reschedulingButton\\
  動作： 日時変更画面へ遷移する．\\
- 引数： なし\\
+ 引数： Delivery delivery\\
  返り値： なし
 
 \item deliveredButton\\
@@ -569,17 +540,17 @@ CourierMapActivityクラスのメソッドは以下の通りです．
 
 \item refineDeliveriesButton\\
 動作： 荷物情報のreceivable\verb|_|statusを見て絞りこみ条件に一致するもののvisibleをtrueにし,それ以外をfalseにする．\\
-引数： なし\\
+引数： View view\\
 返り値： なし
 
 \item showDeliveryDetailActivity\\
 動作： マップ画面から配達物詳細画面へ遷移する．\\
-引数： class Delivery\\
+引数： Delivery delivery\\
 返り値： なし
 
 \item refresh\\
-動作： 画面の再描画を行う．\\
-引数： 配達物のリスト，絞り込み条件\\
+動作： マップ画面の再描画を行う．\\
+引数： なし\\
 返り値： なし
 \end{itemize}
 
@@ -599,9 +570,9 @@ delivered\verb|_|statusは，未選択の状態を0，受け取れない場合�
 int & driver\verb|_|id & 配達員のID     \\
 int & customer\verb|_|id & 消費者のID     \\
 int & manager\verb|_|id & 管理者のID     \\
-int & id & 配達員ID，または消費者ID，または管理者ID \\
+int & id & 配達員ID，または，消費者ID，または，管理者ID     \\
 string  & name  & 名前     \\
-string & possword & パスワード     \\
+string & password & パスワード     \\
 string & mail & メールアドレス     \\
 string & address & 住所     \\
 long & tel & 電話番号     \\
@@ -626,8 +597,8 @@ Serverの各モジュールの仕様は以下の通りです．
 \begin{itemize}
 \item Login.java\\
   動作： 初めにハッシュ値を計算しているか確認を行う．計算していなければパスワードからハッシュ値の計算を行いデータベースに値を格納する．次に，IDとパスワードからデータベースにあるハッシュ値を比較し，ログイン処理を行う．最後に，セッション情報をサーバ内に記憶させる．\\
-  引数： int id，String password\\
-  返り値： int id (NULL値なら認証不可)
+  引数： int id(customer\verb|_|id または driver\verb|_|idまたは manager\verb|_|id)，String password\\
+  返り値： int id(customer\verb|_|id または driver\verb|_|id または manager\verb|_|id) (NULL値なら認証不可)
 \item AuthFilter.java\\
   動作： 認証が通っているかの判別を各サーブレットについて行う．判別にはセッション情報を用いる．このプログラムは，認証が必要な全てのサーブレットに対して行う．\\
   引数： なし\\
@@ -708,7 +679,7 @@ Serverの各モジュールの仕様は以下の通りです．
 
 
 \section{データベース設計}
-本システムではデータベースにAWS(AmazonWebService)を使用します．\\
+本システムのデータベースでは，Amazon RDSにMySQLを導入することで構築を行っています．\\
 実体関連を表したER図を，図\ref{fig:erd}に示します．
 PKは主キー，MKは外部キーを表しています．
 \begin{figure}[H]
