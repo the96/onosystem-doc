@@ -680,7 +680,7 @@ Serverの各モジュールの仕様は以下の通りです．
 
 \section{データベース設計}
 本システムのデータベースでは，Amazon RDSにMySQLを導入することで構築を行っています．\\
-実体関連を表したER図を，図\ref{fig:erd}に示します．
+　実体関連を表したER図を，図\ref{fig:erd}に示します．
 PKは主キー，MKは外部キーを表しています．
 \begin{figure}[H]
  \begin{center}
@@ -745,8 +745,6 @@ PKは主キー，MKは外部キーを表しています．
       address & varchar(128) & NO &   &  & \\ \hline
       ship\verb|_|from & bigint(64) unsigned & YES &  & NULL & \\ \hline
       time & varchar(10) & YES &   & NULL & \\ \hline
-      lat & double(8,6) & YES &   & NULL & \\ \hline
-      lng & double(9,6) & YES &   & NULL & \\ \hline
       delivered\verb|_|status & int(1) unsigned & NO &   & 0 & \\ \hline
       receivable\verb|_|status & int(1) unsigned & NO &  & 0 & \\ \hline
       customer\verb|_|id & int(9) unsigned & NO & MULTIPLE & NULL & \\ \hline
