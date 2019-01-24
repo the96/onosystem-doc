@@ -10,6 +10,9 @@ Main {
   #loginCallback(Connection connection)
   createHomeActivityを呼ぶ。
 
+  #postServer(Connection connection, URL url, String json) return json
+  static
+  
 }
 
 LoginActivity {
@@ -174,3 +177,20 @@ User
 Delivery
   配達物情報を詰めたクラス。
   boolean setVisibleを持たせて表示するかしないかを保存
+
+
+・Class_name
+　・variable
+　　(用途)
+  ・method_name
+    (引数)
+    (戻り値)
+    (動作概要)
+  
+Class_name {
+  variable
+  用途~~~...
+
+  #method_name(引数の説明) return 戻り値
+  説明~~~...
+}
